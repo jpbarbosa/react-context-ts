@@ -7,6 +7,7 @@ interface DataContext {
   active: Record;
   setActive: Function;
   create: Function;
+  update: Function;
   remove: Function;
 }
 
@@ -15,6 +16,7 @@ const dataContext = createContext<DataContext>({
   active: emptyRecord,
   setActive: () => {},
   create: () => {},
+  update: () => {},
   remove: () => {},
 });
 

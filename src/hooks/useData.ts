@@ -24,6 +24,8 @@ export const useData = () => {
         record.id === updatedRecord.id ? updatedRecord : record
       ),
     ]);
+
+    setActive(emptyRecord);
   };
 
   const remove = ({ id }: Record) => {

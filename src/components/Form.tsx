@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Record } from '../entities/Record';
+import { emptyRecord, Record } from '../entities/Record';
 
 interface FormProps {
   action: Function;
@@ -12,6 +12,7 @@ const Form: React.FC<FormProps> = ({ action, record }) => {
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     action(formState);
+    setFormState(emptyRecord);
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
