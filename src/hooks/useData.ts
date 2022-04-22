@@ -17,5 +17,9 @@ export const useData = () => {
     ]);
   };
 
-  return { data, create };
+  const remove = ({ id }: Record) => {
+    setData([...data.filter((record) => record.id !== id)]);
+  };
+
+  return { data, create, remove };
 };

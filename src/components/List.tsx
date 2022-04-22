@@ -1,4 +1,5 @@
 import { useDataContext } from '../contexts/dataContext';
+import Item from './Item';
 
 const List: React.FC = () => {
   const { data } = useDataContext();
@@ -6,7 +7,7 @@ const List: React.FC = () => {
   return (
     <ul>
       {data.map((record) => (
-        <li key={record.id}>{record.description}</li>
+        <Item record={record} />
       ))}
     </ul>
   );
