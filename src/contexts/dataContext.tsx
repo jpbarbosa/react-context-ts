@@ -1,7 +1,9 @@
 import { createContext, ReactNode, useContext } from 'react';
+import { Record } from '../entities/Record';
+import { useData } from '../hooks/useData';
 
 interface DataContext {
-  data: string[];
+  data: Record[];
 }
 
 const dataContext = createContext<DataContext>({
@@ -13,9 +15,7 @@ interface DataProviderProps {
 }
 
 export const DataProvider: React.FC<DataProviderProps> = ({ children }) => {
-  const value = {
-    data: ['Item 1', 'Item 2', 'Item 3'],
-  };
+  const value = useData();
 
   return <dataContext.Provider value={value}>{children}</dataContext.Provider>;
 };
