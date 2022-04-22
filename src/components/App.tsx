@@ -2,6 +2,7 @@ import React from 'react';
 import '../styles/index.css';
 import { DataProvider } from '../contexts/dataContext';
 import List from './List';
+import New from './New';
 
 const App: React.FC = () => {
   return (
@@ -14,6 +15,7 @@ const App: React.FC = () => {
       </header>
       <DataProvider>
         <List />
+        <New />
       </DataProvider>
     </div>
   );

@@ -4,10 +4,12 @@ import { useData } from '../hooks/useData';
 
 interface DataContext {
   data: Record[];
+  create: Function;
 }
 
 const dataContext = createContext<DataContext>({
   data: [],
+  create: () => {},
 });
 
 interface DataProviderProps {
