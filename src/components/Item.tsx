@@ -6,13 +6,19 @@ interface ItemProps {
 }
 
 const Item: React.FC<ItemProps> = ({ record }) => {
-  const { remove } = useDataContext();
+  const { active, setActive, remove } = useDataContext();
 
   return (
     <li key={record.id}>
-      <button onClick={() => remove(record)}>❌</button>
-      <span>{record.description}</span>
-      <span>({record.id})</span>
+      {active.id === record.id ? (
+        <div>Active: {record.description}</div>
+      ) : (
+        <div>
+          <button onClick={() => remove(record)}>❌</button>
+          <span onClick={() => setActive(record)}>{record.description}</span>
+          <span>({record.id})</span>
+        </div>
+      )}
     </li>
   );
 };
