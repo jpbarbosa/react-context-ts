@@ -1,5 +1,7 @@
 import React from 'react';
 import '../styles/index.css';
+import { DataProvider } from '../contexts/dataContext';
+import List from './List';
 
 const App: React.FC = () => {
   return (
@@ -10,6 +12,9 @@ const App: React.FC = () => {
           <div>With Context API And TypeScript</div>
         </h1>
       </header>
+      <DataProvider>
+        <List />
+      </DataProvider>
     </div>
   );
 };
