@@ -1,10 +1,10 @@
 import { useState } from 'react';
-import { emptyRecord, Record } from '../entities/Record';
+import { Record } from '../entities/Record';
 import { data as initialData } from '../seeds/data';
 
 export const useData = () => {
   const [data, setData] = useState<Record[]>(initialData);
-  const [active, setActive] = useState<Record>(emptyRecord);
+  const [active, setActive] = useState<Record | undefined>(undefined);
 
   const create = ({ description }: Record) => {
     const maxId = Math.max(...data.map((record) => record.id || 0)) | 0;
@@ -16,6 +16,8 @@ export const useData = () => {
         description,
       },
     ]);
+
+    setActive(undefined);
   };
 
   const update = (updatedRecord: Record) => {
@@ -25,7 +27,7 @@ export const useData = () => {
       ),
     ]);
 
-    setActive(emptyRecord);
+    setActive(undefined);
   };
 
   const remove = ({ id }: Record) => {

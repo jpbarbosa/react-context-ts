@@ -1,10 +1,10 @@
 import { createContext, ReactNode, useContext } from 'react';
-import { emptyRecord, Record } from '../entities/Record';
+import { Record } from '../entities/Record';
 import { useData } from '../hooks/useData';
 
 interface DataContext {
   data: Record[];
-  active: Record;
+  active?: Record;
   setActive: Function;
   create: Function;
   update: Function;
@@ -13,7 +13,6 @@ interface DataContext {
 
 const dataContext = createContext<DataContext>({
   data: [],
-  active: emptyRecord,
   setActive: () => {},
   create: () => {},
   update: () => {},

@@ -9,10 +9,13 @@ const Show: React.FC<ShowProps> = ({ record }) => {
   const { setActive, remove } = useDataContext();
 
   return (
-    <div>
-      <button onClick={() => remove(record)}>❌</button>
-      <span onClick={() => setActive(record)}>{record.description}</span>
-      <span>({record.id})</span>
+    <div className="item">
+      <span onClick={() => setActive(record)}>
+        {record.description} ({record.id})
+      </span>
+      <button className="bt-remove" onClick={() => remove(record)}>
+        ❌
+      </button>
     </div>
   );
 };

@@ -5,11 +5,13 @@ const List: React.FC = () => {
   const { data } = useDataContext();
 
   return (
-    <ul>
-      {data.map((record) => (
-        <Item record={record} />
-      ))}
-    </ul>
+    <div className="list">
+      <ul>
+        {data.map((record) => (
+          <Item record={record} />
+        ))}
+      </ul>
+    </div>
   );
 };
 

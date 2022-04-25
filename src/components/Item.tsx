@@ -12,7 +12,7 @@ const Item: React.FC<ItemProps> = ({ record }) => {
 
   return (
     <li key={record.id}>
-      {active.id === record.id ? <Edit /> : <Show record={record} />}
+      {active?.id === record.id ? <Edit /> : <Show record={record} />}
     </li>
   );
 };

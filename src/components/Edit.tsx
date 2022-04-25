@@ -5,7 +5,7 @@ import Form from './Form';
 const Edit: React.FC = () => {
   const { active, update } = useDataContext();
 
-  return <Form action={update} record={active} />;
+  return active ? <Form action={update} record={active} /> : <></>;
 };
 
 export default Edit;

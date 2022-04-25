@@ -4,12 +4,17 @@ import { emptyRecord } from '../entities/Record';
 import Form from './Form';
 
 const New: React.FC = () => {
-  const { create } = useDataContext();
+  const { active, setActive, create } = useDataContext();
 
   return (
-    <div>
-      <span>New</span>
-      <Form action={create} record={emptyRecord} />
+    <div className="new">
+      {active && active.id === undefined ? (
+        <Form action={create} record={emptyRecord} />
+      ) : (
+        <button className="bt-new" onClick={() => setActive(emptyRecord)}>
+          New Task
+        </button>
+      )}
     </div>
   );
 };
