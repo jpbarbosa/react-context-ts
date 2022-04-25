@@ -10,9 +10,7 @@ const Show: React.FC<ShowProps> = ({ record }) => {
 
   return (
     <div className="item">
-      <span onClick={() => setActive(record)}>
-        {record.description} ({record.id})
-      </span>
+      <span onClick={() => setActive(record)}>{record.description}</span>
       <button className="bt-remove" onClick={() => remove(record)}>
         ❌
       </button>
