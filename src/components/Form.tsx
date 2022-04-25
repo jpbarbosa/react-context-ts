@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { emptyRecord, Record } from '../entities/Record';
 
 interface FormProps {
@@ -8,6 +8,12 @@ interface FormProps {
 
 const Form: React.FC<FormProps> = ({ action, record }) => {
   const [formState, setFormState] = useState(record);
+
+  const descriptionRef = useRef<HTMLInputElement>(null);
+
+  useEffect(() => {
+    descriptionRef.current?.focus();
+  }, [record]);
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -26,6 +32,7 @@ const Form: React.FC<FormProps> = ({ action, record }) => {
         name="description"
         value={formState.description}
         onChange={handleChange}
+        ref={descriptionRef}
       />
       <input type="submit" value="✓" />
     </form>
