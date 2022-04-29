@@ -1,10 +1,19 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Record } from '../entities/Record';
-import { data as initialData } from '../seeds/data';
+import { data as seedData } from '../seeds/data';
 
 export const useData = () => {
+  const localStorageData = localStorage.getItem('data');
+  const initialData = localStorageData
+    ? JSON.parse(localStorageData)
+    : seedData;
+
   const [data, setData] = useState<Record[]>(initialData);
   const [active, setActive] = useState<Record | undefined>(undefined);
+
+  useEffect(() => {
+    localStorage.setItem('data', JSON.stringify(data));
+  }, [data]);
 
   const create = ({ description }: Record) => {
     const maxId = Math.max(...data.map((record) => record.id || 0)) | 0;
