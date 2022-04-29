@@ -2,7 +2,7 @@ import { createContext, ReactNode, useContext } from 'react';
 import { Record } from '../entities/Record';
 import { useData } from '../hooks/useData';
 
-interface DataContext {
+interface DataContextInterface {
   data: Record[];
   active?: Record;
   setActive: Function;
@@ -11,7 +11,7 @@ interface DataContext {
   remove: Function;
 }
 
-const dataContext = createContext<DataContext>({
+const DataContext = createContext<DataContextInterface>({
   data: [],
   setActive: () => {},
   create: () => {},
@@ -26,7 +26,7 @@ interface DataProviderProps {
 export const DataProvider: React.FC<DataProviderProps> = ({ children }) => {
   const value = useData();
 
-  return <dataContext.Provider value={value}>{children}</dataContext.Provider>;
+  return <DataContext.Provider value={value}>{children}</DataContext.Provider>;
 };
 
-export const useDataContext = () => useContext(dataContext);
+export const useDataContext = () => useContext(DataContext);
